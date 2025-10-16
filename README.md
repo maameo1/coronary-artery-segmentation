@@ -24,7 +24,7 @@ This project investigates how much training data is actually needed for clinical
 - ImageNet pretrained: Dice ~0.XX
 - CT-FM pretrained: Dice ~0.XX
 
-## 🛠️ Installation
+## Installation
 ```bash
 # Clone repository
 git clone https://github.com/[your-username]/coronary-artery-segmentation.git
@@ -60,7 +60,7 @@ coronary-artery-segmentation/
 └── README.md           # This file
 ```
 
-## 📚 Dependencies
+## Dependencies
 
 - Python 3.8+
 - PyTorch 2.0+
