@@ -1,0 +1,17 @@
+# Data regime: 5 training cases
+# Tests extreme data-limited scenario
+
+# Inherit from base config
+defaults:
+  - ../base_config
+
+# Override specific parameters
+data:
+  num_samples: 5
+
+logging:
+  experiment_name: "regime_5_samples"
+
+# May need more aggressive augmentation with very limited data
+training:
+  epochs: 150

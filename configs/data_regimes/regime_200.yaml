@@ -1,0 +1,13 @@
+# Data regime: 200 training cases
+
+defaults:
+  - ../base_config
+
+data:
+  num_samples: 200
+
+logging:
+  experiment_name: "regime_200_samples"
+
+training:
+  epochs: 80
