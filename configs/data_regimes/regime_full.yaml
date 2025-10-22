@@ -1,0 +1,13 @@
+# Data regime: Full dataset (all available training cases)
+
+defaults:
+  - ../base_config
+
+data:
+  num_samples: null  # Use all available data
+
+logging:
+  experiment_name: "regime_full_dataset"
+
+training:
+  epochs: 80

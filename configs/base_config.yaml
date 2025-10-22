@@ -1,0 +1,78 @@
+# Base configuration for coronary artery segmentation experiments
+# This file contains default parameters shared across all experiments
+
+# Dataset configuration
+data:
+  dataset: "imagecas"  # Options: imagecas, asoca
+  data_dir: "./data/imagecas"
+  num_workers: 4
+  batch_size: 2
+
+  # Data preprocessing
+  spatial_size: [96, 96, 96]  # Patch size for training
+  pixdim: [1.0, 1.0, 1.0]  # Target spacing in mm
+
+  # Intensity windowing (HU range for CT)
+  a_min: -200.0  # Minimum HU value
+  a_max: 300.0   # Maximum HU value
+
+  # Cross-validation
+  num_folds: 5
+  fold: 0
+
+  # Data regime (number of training samples)
+  num_samples: null  # null = use all available
+
+# Model configuration
+model:
+  architecture: "unet"  # Options: unet, unet++, attention_unet
+  in_channels: 1
+  out_channels: 2  # Background + coronary artery
+
+  # U-Net specific
+  channels: [32, 64, 128, 256, 512]
+  strides: [2, 2, 2, 2]
+
+  # Transfer learning
+  pretrained: null  # Options: null, imagenet, radimagenet, ctfm
+  freeze_encoder: false
+
+# Training configuration
+training:
+  epochs: 100
+  learning_rate: 1.0e-4
+  weight_decay: 1.0e-5
+
+  # Optimizer
+  optimizer: "adam"  # Options: adam, adamw, sgd
+
+  # Learning rate scheduler
+  scheduler: "cosine"  # Options: cosine, step, plateau
+
+  # Loss function
+  loss: "dice_ce"  # Options: dice, ce, dice_ce, focal
+
+  # Validation
+  val_interval: 1  # Validate every N epochs
+
+  # Early stopping
+  patience: 20
+
+  # Checkpointing
+  save_best_only: true
+
+# Hardware
+device: "cuda"  # Options: cuda, cpu
+amp: true  # Automatic mixed precision
+
+# Logging
+logging:
+  experiment_name: "baseline"
+  log_dir: "./experiments/logs"
+  checkpoint_dir: "./experiments/checkpoints"
+  use_tensorboard: true
+  use_wandb: false
+  wandb_project: "coronary-segmentation"
+
+# Random seed for reproducibility
+seed: 42
